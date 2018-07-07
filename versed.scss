@@ -1,0 +1,61 @@
+/*  Styles for versed.js
+    (c) Arthur Attwell
+    https://arthurattwell.com
+    MIT licence */
+
+//  Verse in a block centres on its longest line,
+//  which is best-practice for poetry layout
+.versed-wrapper {
+    text-align: center;
+}
+.versed {
+    text-align: left;
+    display: inline-block;
+    min-width: 51%; // so verse pieces with short lines don't end up side by side
+    margin: auto;
+    hyphens: manual;
+}
+
+// Allow for verse marked up in blockquotes,
+// by removing the usual user-agent padding from these blockquotes
+// which renders them much like divs.
+blockquote.versed {
+    margin: 0;
+}
+
+// Make runover lines indented
+// and preserve white space
+.versed [class*='versed-line-'] {
+    display: block;
+    text-indent: -2em;
+    margin-left: 2em;
+}
+
+// Indents for lines of verse
+// These let us indent runovers of indented line
+@for $i from 1 through 50 {
+    $add-margin: $i + 2em;
+    .versed .versed-line-indent-#{$i} {
+        margin-left: $add-margin;
+        text-indent: -($add-margin)
+    }
+}
+
+// Overrides for print
+
+@media print {
+    .versed {
+        // Let long poems break over pages,
+        // which inline-block would prevent
+        display: block;
+        // Without that approach to centering,
+        // we use a different approach
+        margin-left: 50%;
+        transform: translatex(-50%);
+        // Avoid widow and orphan lines
+        p {
+            widows: 2;
+            orphans: 2;
+        }
+    }
+}
