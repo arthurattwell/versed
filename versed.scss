@@ -41,6 +41,23 @@ blockquote.versed {
     }
 }
 
+// Line numbers
+.versed.versed-number-lines {
+    counter-reset: line;
+    [class*='versed-line-'] {
+        &:after {
+            counter-increment: line;
+            content: counter(line);
+            color: #CCCCCC;
+            float: right;
+            margin-left: 2em;
+            text-indent: 0;
+            font-size: 0.8em;
+            margin-top: 0.2em; // aligns numbers with text after font-size change
+        }
+    }
+}
+
 // Overrides for print
 
 @media print {
