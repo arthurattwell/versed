@@ -20,6 +20,11 @@
         text-align: left;
         widows: 2;
         orphans: 2;
+        // Avoid inheriting book-style paragraphs
+        // that are closed up and indented.
+        // Margin-bottom may need case-by-case overriding.
+        margin-bottom: 1em;
+        text-indent: 0;
     }
 }
 
@@ -31,7 +36,7 @@ blockquote.versed {
 }
 
 // Make runover lines indented
-.versed [class*='versed-line-'] {
+.versed [class*='versed-line-number-'] {
     display: block;
     text-indent: -2em;
     margin-left: 2em;
@@ -40,7 +45,7 @@ blockquote.versed {
 // Indent runovers of indented lines
 @for $i from 1 through 50 {
     $add-margin: $i + 2em;
-    .versed .versed-line-indent-#{$i} {
+    .versed .versed-line-indent-#{$i}-em {
         margin-left: $add-margin;
         text-indent: -($add-margin)
     }
