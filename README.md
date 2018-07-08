@@ -2,32 +2,24 @@
 
 **Typographic control for verse, poetry, hymns and lyrics.**
 
-> This is work in progress.
-
-Proper poetry layout has two specific needs:
-
-- long lines that run over should be indented
-- verse blocks should be [centered on their longest line](http://webtypography.net/2.3.4).
-
-You can get this effect by:
-
-1. Including `versed.js` and `versed.css` on your page
-2. Marking up your verse HTML sensibly. (You can do it simply in markdown, too.)
+See the [project home page](https://arthuratwtwell.github.io/versed) for examples.
 
 ## Usage
 
+> Note: This is work in progress.
+
 ### 1. Add `versed.js` and `versed.css`
 
-First, link to `versed.css` and `versed.js` in your page. See this project's `index.html` page for an example.
+Link to `versed.css` and `versed.js` (or `versed.min.js`) in your HTML. See this project's `index.html` page for an example.
 
 ### 2. Mark up your verse
 
-This is really easy once you know how.
+To do this, you'll:
 
-1. In your HTML, mark up stanzas as paragraphs (that is, `<p>` elements), and use line breaks (`<br>`) to break lines.
-2. Wrap each poem (including its title, which would normally be marked up as a heading element) in a `div` or a `blockquote` with the class `versed`.
+1. Mark up stanzas as `<p>`s, with `<br>`s for line breaks.
+2. Wrap each poem (including its title, marked up as a heading element) in a `div` or a `blockquote` with the class `versed`.
 
-This is also easy to do in markdown by wrapping each poem in an HTML `div`. Most markdown flavour let you wrap passages of markdown in `<div class="versed">...</div>`:
+#### HTML examples
 
 ``` html
 <div class="versed">
@@ -35,21 +27,74 @@ This is also easy to do in markdown by wrapping each poem in an HTML `div`. Most
     <h3>I Wandered Lonely as a Cloud</h3>
 
     <p>I wandered lonely as a cloud<br>
-    That floats on high o'er vales and hills ...</p>
+    That floats on high o'er vales and hills<br>
+    When all at once I saw a crowd,<br>
+    A host, of golden daffodils;<br>
+    Beside the lake, beneath the trees,<br>
+    Fluttering and dancing in the breeze.</p>
 
 </div>
 ```
 
-In [CommonMark](https://spec.commonmark.org/0.28/#html-blocks), you only have to have a blank line around the HTML tags. In [kramdown](https://kramdown.gettalong.org/syntax.html#html-spans), you add the attribute `markdown="1"` to the opening `div` tag.
+#### Markdown examples
 
-You can also use a blockquote, if you can apply a `versed` class to it. For instance, in kramdown you can do:
+This is also easy to do in markdown by wrapping each poem in an HTML `<div>`. Most markdown flavours let you do this.
+
+In [CommonMark](https://spec.commonmark.org/0.28/#html-blocks), you add a blank line around the HTML `<div>` tags.
 
 ``` md
-> I wandered lonely as a cloud
+
+<div class="versed">
+
+### I Wandered Lonely as a Cloud
+
+I wandered lonely as a cloud\\
+That floats on high o'er vales and hills,\\
+When all at once I saw a crowd,\\
+A host, of golden daffodils;\\
+Beside the lake, beneath the trees,\\
+Fluttering and dancing in the breeze.
+
+</div>
+
+```
+
+In [kramdown](https://kramdown.gettalong.org/syntax.html#html-spans), you add the attribute `markdown="1"` to the opening `div` tag.
+
+``` md
+
+<div class="versed" markdown="1">
+
+### I Wandered Lonely as a Cloud
+
+I wandered lonely as a cloud\\
+That floats on high o'er vales and hills,\\
+When all at once I saw a crowd,\\
+A host, of golden daffodils;\\
+Beside the lake, beneath the trees,\\
+Fluttering and dancing in the breeze.
+
+</div>
+
+```
+
+In kramdown you can also use a blockquote instead, and apply a `versed` class to it. For instance, in kramdown you can do:
+
+``` md
+> ### I Wandered Lonely as a Cloud
+> 
+> I wandered lonely as a cloud\\
+> That floats on high o'er vales and hills,\\
+> When all at once I saw a crowd,\\
+> A host, of golden daffodils;\\
+> Beside the lake, beneath the trees,\\
+> Fluttering and dancing in the breeze.
 {:.versed}
 ```
 
-(Versed will override normal blockquote indentation to format that blockquote as a plain div.)
+(Versed will override basic user-agent blockquote indentation to use that blockquote as a plain div.)
+
+#### Indentation
 
 For line indents and extra spaces, use em spaces. This is best done with the HTML entity `&emsp;`.
 
@@ -73,16 +118,13 @@ To add line numbers to your poems, add the class `versed-number-lines` to your `
 
 Poetry formatting is complicated, and if you've studied poetry and know HTML you know that HTML has no inherent way to mark up poetry semantically in a way that suits poetry's semantic structures. And the same goes for all verse, including lyrics and hymns or snippets of song in running text.
 
-We needed:
+I set out to find or create:
 
 1. A convention for marking up poetry that can be expressed in plain markdown (e.g. [CommonMark](http://commonmark.org/) for want of a better 'standard'). Rendered as HTML with nothing but user-agent formatting, the poems should still be readable and recognisable as poems.
-2. A script that turns those poems into properly structured elements that we can target with CSS. The script:
-    - targets a class, which can be applied, for instance, to a `div` or a `blockquote` that contains verse. (e.g. applied to markdown if you're using kramdown, or by wrapping markdown in a `div` that the processor knows to process), 
-    - some kind of explicit delimiter (e.g. a lone pilcrow before and after a poem) or
-    - the pattern of elements created by our given syntax (e.g. a heading followed by a series of short lines). This last option is most convenient and least likely to work.
-3. An unopinionated CSS stylesheet (probably written as Sass) that can be applied to format these poems conventionally (e.g. enlarge titles, preserve white space, put spaces between stanzas, and indent runover lines).
+2. A script that turns those poems into properly structured elements that we can target with CSS. The script targets a class, which can be applied, for instance, to a `div` or a `blockquote` that contains verse. (e.g. applied to markdown if you're using kramdown, or by wrapping markdown in a `div` that the processor knows to process).
+3. An unopinionated CSS stylesheet to format these poems.
 
-## Others' work
+### Others' work
 
 Who else has tackled similar issues?
 
