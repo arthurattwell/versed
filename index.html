@@ -2,10 +2,42 @@
 <html lang="en">
 <head>
     <title>Versed</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="Versed" />
+    <meta property="og:description" content="Typographic control for verse, poetry, hymns and lyrics" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://arthurattwell.github.io/versed/" />
+    <link rel="stylesheet" type="text/css" media="all" href="https://arthurattwell.github.io/halfdecent/halfdecent.css" />
+
+    <!-- Add Versed to a page with the following two lines. Adjust paths to versed.css and versed.min.js as needed. -->
     <link rel="stylesheet" type="text/css" href="versed.css">
     <script src="versed.js"></script>
+
 </head>
 <body>
+
+    <h1>Versed</h1>
+
+    <p><strong>Typographic control for verse, poetry, hymns and lyrics</strong></p>
+
+    <p>Proper verse layout has two specific needs:</p>
+
+    <ul>
+        <li>long lines that run over should be indented</li>
+        <li>verse blocks should be <a href="http://webtypography.net/2.3.4">centered on their longest line</a>.</li>
+    </ul>
+
+    <p>As a bonus, you should be able to target lines with CSS. For instance, to add line numbers.</p>
+
+    <p>This can't be done with plain HTML elements, but you can get this effect if you:</p>
+
+    <ol>
+        <li>link to <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.min.js"><code>versed.js</code></a> and <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.css"><code>versed.css</code></a> on your page</li>
+        <li>mark up your verse in HTML with <code>p</code>s and <code>br</code>s, and wrap each piece in a <code>div class="versed"</code>. You can do this in markdown, too. <a href="https://github.com/arthurattwell/versed#versed">More instructions here</a>.</li>
+    </ol>
+
+    <h2>Samples</h2>
 
     <div class="versed">
 
@@ -29,7 +61,7 @@
 
     </div>
 
-    <div class="versed">
+    <div class="versed versed-number-lines">
 
         <h3>Gerontion</h3>
 
@@ -120,6 +152,35 @@
         Thoughts of a dry brain in a dry season.</p>
 
     </div>
+
+<!-- Alternative HTML style -->
+<div class="versed versed-number-lines">
+    <h3>I Wandered Lonely as a Cloud</h3>
+    <p>I wandered lonely as a cloud
+        <br> That floats on high o'er vales and hills,
+        <br> When all at once I saw a crowd,
+        <br> A host, of golden daffodils;
+        <br> Beside the lake, beneath the trees,
+        <br> Fluttering and dancing in the breeze.</p>
+    <p>Continuous as the stars that shine
+        <br> And twinkle on the milky way,
+        <br> They stretched in never-ending line
+        <br> Along the margin of a bay:
+        <br> Ten thousand saw I at a glance,
+        <br> Tossing their heads in sprightly dance.</p>
+    <p>The waves beside them danced; but they
+        <br> Out-did the sparkling waves in glee:
+        <br> A poet could not but be gay,
+        <br> In such a jocund company:
+        <br> I gazed—and gazed—but little thought
+        <br> What wealth the show to me had brought:</p>
+    <p>For oft, when on my couch I lie
+        <br> In vacant or in pensive mood,
+        <br> They flash upon that inward eye
+        <br> Which is the bliss of solitude;
+        <br> And then my heart with pleasure fills,
+        <br> And dances with the daffodils.</p>
+</div>
 
 </body>
 </html>
