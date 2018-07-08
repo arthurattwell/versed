@@ -45,6 +45,7 @@ blockquote.versed {
 .versed.versed-number-lines {
     counter-reset: line;
     [class*='versed-line-'] {
+        clear: right; // avoids two line numbers on one line
         &:after {
             counter-increment: line;
             content: counter(line);
