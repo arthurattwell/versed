@@ -2,7 +2,7 @@
 
 **Typographic control for verse, poetry, hymns and lyrics.**
 
-See the [project home page](https://arthuratwtwell.github.io/versed) for examples.
+See the [project home page](https://arthurattwell.github.io/versed) for examples.
 
 ## Usage
 
