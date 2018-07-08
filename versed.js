@@ -47,25 +47,24 @@ function versedWrapLines(
 
     // Wrap each line of a stanza in a span
     // Adapted from https://gist.github.com/madrobby/1119059
-    stanza,                                             // a DOM element
-    match                                               // regexp to find lines
+    stanza,                                                 // a DOM element
+    match                                                   // regexp to find lines
 ) {
-    stanza.innerHTML =                                  // replace the html contents
-        stanza.innerHTML.replace(                       // with the text contents
-        match || /.+(?=<br[ \/]*>|[\s]*$)/gim,          // default regexp: up to a br tag,
-                                                        // or the end of the stanza 
-        function(line){                                 // wrapped in
-                return '<span class="versed-line-' +    // span with class names
-                    (stanza=-~stanza) +                 // span 1 .. span N. "stanza" is reused, and initialized.
-                                                        //    ~document.body  => -1 
-                                                        //    -~document.body => 1
-                                                        //    -~1             => 2 
-                                                        //    -~2             => 3 etc.
+    stanza.innerHTML =                                      // replace the html contents
+        stanza.innerHTML.replace(                           // with the text contents
+        match || /(^|<br[ \/]*?>).*?(?=<br[ \/]*?>|$)/gmi,  // regexp to match each line
+        function(line){                                     // wrapped in
+                return '<span class="versed-line-number-' + // span with class names
+                    (stanza=-~stanza) +                     // span 1 .. span N. "stanza" is reused, and initialized.
+                                                            //    ~document.body  => -1
+                                                            //    -~document.body => 1
+                                                            //    -~1             => 2
+                                                            //    -~2             => 3 etc.
                     '">' + 
-                    versedStripSpaces(line) +           // line of poetry, with leading/trailing spaces stripped
+                    versedStripSpaces(line) +               // line of poetry, with leading/trailing spaces stripped
                     '</span>'
         }
-    ).replace(/<br[ \/]*>/gim, '')                       // and remove the break elements
+    ).replace(/<br[ \/]*>/gim, '')                         // and remove the break elements
 }
 
 function versedCountIndents(line, spaces) {
@@ -79,10 +78,10 @@ function versedCountIndents(line, spaces) {
 
 }
 
-function versedIndentLines(verse) {
+function versedIndentLines(stanza) {
 
-    // Get all the lines in the verse
-    var lines = verse.querySelectorAll('[class*="versed-line-"]');
+    // Get all the lines in the stanza
+    var lines = stanza.querySelectorAll('[class*="versed-line-number-"]');
 
     // If a line is indented with em spaces, and add a class
     // so that we can further indent runover lines with CSS
@@ -90,8 +89,9 @@ function versedIndentLines(verse) {
         var line = lines[i];
         var spaces = /\u2003/gi
         var indents = versedCountIndents(line, spaces);
-        if (indents > 0) {
-            line.setAttribute('class','versed-line-indent-' + indents);
+        var existingClass = line.getAttribute('class');
+        if (indents > 0 && existingClass) {
+            line.setAttribute('class', existingClass + ' versed-line-indent-' + indents + '-em');
         }
     }
 }
@@ -108,7 +108,7 @@ function versed() {
         for (var j = 0; j < stanzas.length; j++) {
             var stanza = stanzas[j];
             versedWrapLines(stanza);
-            versedIndentLines(verse);
+            versedIndentLines(stanza);
         }
 
         // then wrap the verse in a div.verse-wrapper
