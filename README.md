@@ -100,6 +100,8 @@ For line indents and extra spaces, use em spaces. This is best done with the HTM
 
 #### Line numbers
 
+> This is not currently working properly.
+
 To add line numbers to your poems, add the class `versed-number-lines` to your `div` or `blockquote`, like this: 
 
 ``` html
