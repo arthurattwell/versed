@@ -1,174 +1,195 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Versed</title>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="og:title" content="Versed" />
-    <meta property="og:description" content="Typographic control for verse, poetry, hymns and lyrics" />
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://arthurattwell.github.io/versed/" />
-    <link rel="stylesheet" type="text/css" media="all" href="https://arthurattwell.github.io/halfdecent/halfdecent.css" />
+    <head>
+        <title>Versed</title>
+        <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta property="og:title" content="Versed" />
+        <meta property="og:description" content="Typographic control for verse, poetry, hymns and lyrics" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://arthurattwell.github.io/versed/" />
+        <link rel="stylesheet" type="text/css" media="all" href="https://arthurattwell.github.io/halfdecent/halfdecent.css" />
 
-    <!-- Add Versed to a page with the following two lines. Adjust paths to versed.css and versed.js as needed. -->
-    <link rel="stylesheet" type="text/css" href="versed.css">
-    <script src="versed.js"></script>
+        <!-- Add Versed to a page with the following two lines. Adjust paths to versed.css and versed.js as needed. -->
+        <link rel="stylesheet" type="text/css" href="versed.css">
+        <script src="versed.js"></script>
 
-</head>
-<body>
+    </head>
+    <body>
 
-    <h1>Versed</h1>
+        <h1>Versed</h1>
 
-    <p><strong>Typographic control for verse, poetry, hymns and lyrics</strong></p>
+        <p><strong>Typographic control for verse, poetry, hymns and&nbsp;lyrics</strong></p>
 
-    <p>Proper verse layout has two specific needs:</p>
+        <p>Proper verse layout has two specific needs:</p>
 
-    <ul>
-        <li>long lines that run over should be indented</li>
-        <li>verse blocks should be <a href="http://webtypography.net/2.3.4">centered on their longest line</a>.</li>
-    </ul>
+        <ul>
+            <li>Long lines that run over should be indented.</li>
+            <li>Blocks of verse should be centered on their longest line.</li>
+        </ul>
 
-    <p>As a bonus, you should be able to target lines with CSS. For instance, to add line numbers.</p>
+        <p>You should also be able to target individual lines with CSS. For instance, to add line numbers.</p>
 
-    <p>This can't be done with plain HTML elements, but you can get this effect if you:</p>
+        <p>The only way to get this effect with sensible HTML is to wrap each line in a span (with its own class), and to write CSS to control runover lines and centering. That's a lot of work to do by hand. Versed does it for you in the browser.</p>
 
-    <ol>
-        <li>link to <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.min.js"><code>versed.js</code></a> and <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.css"><code>versed.css</code></a> on your page</li>
-        <li>mark up your verse in HTML with <code>p</code>s and <code>br</code>s, and wrap each piece in a <code>div class="versed"</code>. You can do this in markdown, too. <a href="https://github.com/arthurattwell/versed#versed">More instructions here</a>.</li>
-    </ol>
+        <ol>
+            <li>Link to <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.js"><code>versed.js</code></a> and <a href="https://raw.githubusercontent.com/arthurattwell/versed/master/versed.css"><code>versed.css</code></a> on your page.</li>
+            <li>Mark up your verse in HTML with <code>p</code>s and <code>br</code>s, and wrap each piece in a <code>div class="versed"</code>. You can do this easily in markdown, too.</li>
+        </ol>
 
-    <h2>Samples</h2>
+        <a href="https://github.com/arthurattwell/versed#versed">See the code's README for instructions</a>.
 
-    <div class="versed">
+        <h2>Samples</h2>
 
-        <h3>To One Who Has Been Long in City Pent</h3>
+        <p>Here's a short poem with indented lines.</p>
 
-        <p>To one who has been long in city pent,<br />&emsp;&emsp;‘Tis very sweet to look into the fair<br /> &emsp;&emsp;And open face of heaven,—to breathe a prayer<br /> Full in the smile of the blue firmament.<br /> Who is more happy, when, with heart’s content,<br /> &emsp;&emsp;Fatigued he sinks into some pleasant lair<br /> &emsp;&emsp;Of wavy grass, and reads a debonair<br /> And gentle tale of love and languishment?</p>
+        <!-- HTML style with no line breaks -->
+        <div class="versed">
 
-        <p>Returning home at evening, with an ear<br/> &emsp;&emsp;Catching the notes of Philomel,—an eye<br/> Watching the sailing cloudlet’s bright career,<br> &emsp;&emsp;He mourns that day so soon has glided by:<br> E’en like the passage of an angel’s tear<br> &emsp;&emsp;That falls through the clear ether silently.</p>
+            <h3>To One Who Has Been Long in City Pent</h3>
 
-    </div>
+            <p>To one who has been long in city pent,<br />&emsp;&emsp;‘Tis very sweet to look into the fair<br /> &emsp;&emsp;And open face of heaven,—to breathe a prayer<br /> Full in the smile of the blue firmament.<br /> Who is more happy, when, with heart’s content,<br /> &emsp;&emsp;Fatigued he sinks into some pleasant lair<br /> &emsp;&emsp;Of wavy grass, and reads a debonair<br /> And gentle tale of love and languishment?</p>
 
-    <div class="versed">
+            <p>Returning home at evening, with an ear<br/> &emsp;&emsp;Catching the notes of Philomel,—an eye<br/> Watching the sailing cloudlet’s bright career,<br> &emsp;&emsp;He mourns that day so soon has glided by:<br> E’en like the passage of an angel’s tear<br> &emsp;&emsp;That falls through the clear ether silently.</p>
 
-        <h3>Gerontion</h3>
+        </div>
 
-        <p>&emsp;Thou hast nor youth nor age<br>
-        &emsp;But as it were an after dinner sleep<br>
-        &emsp;Dreaming of both.</p>
+        <p>And here's a longer poem with line numbers.</p>
 
-        <p>Here I am, an old man in a dry month,<br>
-        Being read to by a boy, waiting for rain.<br>
-        I was neither at the hot gates<br>
-        Nor fought in the warm rain<br>
-        Nor knee deep in the salt marsh, heaving a cutlass,<br>
-        Bitten by flies, fought.<br>
-        My house is a decayed house,<br>
-        And the jew squats on the window sill, the owner,<br>
-        Spawned in some estaminet of Antwerp,<br>
-        Blistered in Brussels, patched and peeled in London.<br>
-        The goat coughs at night in the field overhead;<br>
-        Rocks, moss, stonecrop, iron, merds.<br>
-        The woman keeps the kitchen, makes tea,<br>
-        Sneezes at evening, poking the peevish gutter.</p>
+        <!-- HTML style with unclosed br tags -->
+        <div class="versed versed-number-lines">
 
-        <p>&emsp;&emsp;&emsp;&emsp;&emsp;I an old man,<br>
-        A dull head among windy spaces.<br>
-        Signs are taken for wonders. “We would see a sign”:<br>
-        The word within a word, unable to speak a word,<br>
-        Swaddled with darkness. In the juvescence of the year<br>
-        Came Christ the tiger</p>
+            <h3>Gerontion</h3>
 
-        <p>In depraved May, dogwood and chestnut, flowering Judas,<br>
-        To be eaten, to be divided, to be drunk<br>
-        Among whispers; by Mr. Silvero<br>
-        With caressing hands, at Limoges<br>
-        Who walked all night in the next room;<br>
-        By Hakagawa, bowing among the Titians;<br>
-        By Madame de Tornquist, in the dark room<br>
-        Shifting the candles; Fraulein von Kulp<br>
-        Who turned in the hall, one hand on the door. Vacant shuttles<br>
-        Weave the wind. I have no ghosts,<br>
-        An old man in a draughty house<br>
-        Under a windy knob.</p>
+            <p>&emsp;Thou hast nor youth nor age<br>
+            &emsp;But as it were an after dinner sleep<br>
+            &emsp;Dreaming of both.</p>
 
-        <p>After such knowledge, what forgiveness? Think now<br>
-        History has many cunning passages, contrived corridors<br>
-        And issues, deceives with whispering ambitions,<br>
-        Guides us by vanities. Think now<br>
-        She gives when our attention is distracted<br>
-        And what she gives, gives with such supple confusions<br>
-        That the giving famishes the craving. Gives too late<br>
-        What’s not believed in, or if still believed,<br>
-        In memory only, reconsidered passion. Gives too soon<br>
-        Into weak hands, what’s thought can be dispensed with<br>
-        Till the refusal propagates a fear. Think<br>
-        Neither fear nor courage saves us. Unnatural vices<br>
-        Are fathered by our heroism. Virtues<br>
-        Are forced upon us by our impudent crimes.<br>
-        These tears are shaken from the wrath-bearing tree.</p>
+            <p>Here I am, an old man in a dry month,<br>
+            Being read to by a boy, waiting for rain.<br>
+            I was neither at the hot gates<br>
+            Nor fought in the warm rain<br>
+            Nor knee deep in the salt marsh, heaving a cutlass,<br>
+            Bitten by flies, fought.<br>
+            My house is a decayed house,<br>
+            And the jew squats on the window sill, the owner,<br>
+            Spawned in some estaminet of Antwerp,<br>
+            Blistered in Brussels, patched and peeled in London.<br>
+            The goat coughs at night in the field overhead;<br>
+            Rocks, moss, stonecrop, iron, merds.<br>
+            The woman keeps the kitchen, makes tea,<br>
+            Sneezes at evening, poking the peevish gutter.</p>
 
-        <p>The tiger springs in the new year. Us he devours. Think at last<br>
-        We have not reached conclusion, when I<br>
-        Stiffen in a rented house. Think at last<br>
-        I have not made this show purposelessly<br>
-        And it is not by any concitation<br>
-        Of the backward devils.<br>
-        I would meet you upon this honestly.<br>
-        I that was near your heart was removed therefrom<br>
-        To lose beauty in terror, terror in inquisition.<br>
-        I have lost my passion: why should I need to keep it<br>
-        Since what is kept must be adulterated?<br>
-        I have lost my sight, smell, hearing, taste and touch:<br>
-        How should I use it for your closer contact?</p>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;I an old man,<br>
+            A dull head among windy spaces.<br>
+            Signs are taken for wonders. “We would see a sign”:<br>
+            The word within a word, unable to speak a word,<br>
+            Swaddled with darkness. In the juvescence of the year<br>
+            Came Christ the tiger</p>
 
-        <p>These with a thousand small deliberations<br>
-        Protract the profit of their chilled delirium,<br>
-        Excite the membrane, when the sense has cooled,<br>
-        With pungent sauces, multiply variety<br>
-        In a wilderness of mirrors. What will the spider do,<br>
-        Suspend its operations, will the weevil<br>
-        Delay? De Bailhache, Fresca, Mrs. Cammel, whirled<br>
-        Beyond the circuit of the shuddering Bear<br>
-        In fractured atoms. Gull against the wind, in the windy straits<br>
-        Of Belle Isle, or running on the Horn,<br>
-        White feathers in the snow, the Gulf claims,<br>
-        And an old man driven by the Trades<br>
-        To a sleepy corner.</p>
+            <p>In depraved May, dogwood and chestnut, flowering Judas,<br>
+            To be eaten, to be divided, to be drunk<br>
+            Among whispers; by Mr. Silvero<br>
+            With caressing hands, at Limoges<br>
+            Who walked all night in the next room;<br>
+            By Hakagawa, bowing among the Titians;<br>
+            By Madame de Tornquist, in the dark room<br>
+            Shifting the candles; Fraulein von Kulp<br>
+            Who turned in the hall, one hand on the door. Vacant shuttles<br>
+            Weave the wind. I have no ghosts,<br>
+            An old man in a draughty house<br>
+            Under a windy knob.</p>
 
-        <p>&emsp;&emsp;&emsp;&emsp;&emsp;Tenants of the house,<br>
-        Thoughts of a dry brain in a dry season.</p>
+            <p>After such knowledge, what forgiveness? Think now<br>
+            History has many cunning passages, contrived corridors<br>
+            And issues, deceives with whispering ambitions,<br>
+            Guides us by vanities. Think now<br>
+            She gives when our attention is distracted<br>
+            And what she gives, gives with such supple confusions<br>
+            That the giving famishes the craving. Gives too late<br>
+            What’s not believed in, or if still believed,<br>
+            In memory only, reconsidered passion. Gives too soon<br>
+            Into weak hands, what’s thought can be dispensed with<br>
+            Till the refusal propagates a fear. Think<br>
+            Neither fear nor courage saves us. Unnatural vices<br>
+            Are fathered by our heroism. Virtues<br>
+            Are forced upon us by our impudent crimes.<br>
+            These tears are shaken from the wrath-bearing tree.</p>
 
-    </div>
+            <p>The tiger springs in the new year. Us he devours. Think at last<br>
+            We have not reached conclusion, when I<br>
+            Stiffen in a rented house. Think at last<br>
+            I have not made this show purposelessly<br>
+            And it is not by any concitation<br>
+            Of the backward devils.<br>
+            I would meet you upon this honestly.<br>
+            I that was near your heart was removed therefrom<br>
+            To lose beauty in terror, terror in inquisition.<br>
+            I have lost my passion: why should I need to keep it<br>
+            Since what is kept must be adulterated?<br>
+            I have lost my sight, smell, hearing, taste and touch:<br>
+            How should I use it for your closer contact?</p>
 
-<!-- Alternative HTML style -->
-<div class="versed">
-    <h3>I Wandered Lonely as a Cloud</h3>
-    <p>I wandered lonely as a cloud
-        <br> That floats on high o'er vales and hills,
-        <br> When all at once I saw a crowd,
-        <br> A host, of golden daffodils;
-        <br> Beside the lake, beneath the trees,
-        <br> Fluttering and dancing in the breeze.</p>
-    <p>Continuous as the stars that shine
-        <br> And twinkle on the milky way,
-        <br> They stretched in never-ending line
-        <br> Along the margin of a bay:
-        <br> Ten thousand saw I at a glance,
-        <br> Tossing their heads in sprightly dance.</p>
-    <p>The waves beside them danced; but they
-        <br> Out-did the sparkling waves in glee:
-        <br> A poet could not but be gay,
-        <br> In such a jocund company:
-        <br> I gazed—and gazed—but little thought
-        <br> What wealth the show to me had brought:</p>
-    <p>For oft, when on my couch I lie
-        <br> In vacant or in pensive mood,
-        <br> They flash upon that inward eye
-        <br> Which is the bliss of solitude;
-        <br> And then my heart with pleasure fills,
-        <br> And dances with the daffodils.</p>
-</div>
+            <p>These with a thousand small deliberations<br>
+            Protract the profit of their chilled delirium,<br>
+            Excite the membrane, when the sense has cooled,<br>
+            With pungent sauces, multiply variety<br>
+            In a wilderness of mirrors. What will the spider do,<br>
+            Suspend its operations, will the weevil<br>
+            Delay? De Bailhache, Fresca, Mrs. Cammel, whirled<br>
+            Beyond the circuit of the shuddering Bear<br>
+            In fractured atoms. Gull against the wind, in the windy straits<br>
+            Of Belle Isle, or running on the Horn,<br>
+            White feathers in the snow, the Gulf claims,<br>
+            And an old man driven by the Trades<br>
+            To a sleepy corner.</p>
 
-</body>
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;Tenants of the house,<br>
+            Thoughts of a dry brain in a dry season.</p>
+
+        </div>
+
+        <p>Here's a simple classic with shorter lines.</p>
+
+        <!-- HTML style with br tags on new lines -->
+        <div class="versed">
+            <h3>I Wandered Lonely as a Cloud</h3>
+            <p>I wandered lonely as a cloud
+                <br> That floats on high o'er vales and hills,
+                <br> When all at once I saw a crowd,
+                <br> A host, of golden daffodils;
+                <br> Beside the lake, beneath the trees,
+                <br> Fluttering and dancing in the breeze.</p>
+            <p>Continuous as the stars that shine
+                <br> And twinkle on the milky way,
+                <br> They stretched in never-ending line
+                <br> Along the margin of a bay:
+                <br> Ten thousand saw I at a glance,
+                <br> Tossing their heads in sprightly dance.</p>
+            <p>The waves beside them danced; but they
+                <br> Out-did the sparkling waves in glee:
+                <br> A poet could not but be gay,
+                <br> In such a jocund company:
+                <br> I gazed—and gazed—but little thought
+                <br> What wealth the show to me had brought:</p>
+            <p>For oft, when on my couch I lie
+                <br> In vacant or in pensive mood,
+                <br> They flash upon that inward eye
+                <br> Which is the bliss of solitude;
+                <br> And then my heart with pleasure fills,
+                <br> And dances with the daffodils.</p>
+        </div>
+
+        <p>Versed works fine for little extracts, too:</p>
+
+        <div class="versed">
+            <p>&emsp;&emsp;&emsp;&emsp;&emsp;Tenants of the house,<br>
+            Thoughts of a dry brain in a dry season.</p>
+        </div>
+
+        <h2>Contributions</h2>
+
+        <p>If you have suggestions, <a href="https://github.com/arthurattwell/versed/issues">add an issue on GitHub</a>.</p>
+
+    </body>
 </html>
