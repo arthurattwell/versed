@@ -3,6 +3,11 @@
     https://arthurattwell.com
     MIT licence */
 
+// Options
+$runover-indent: 1em;
+$line-numbers-color: #CCCCCC;
+$line-numbers-size: 0.8em;
+
 //  Verse in a block centres on its longest line,
 //  which is best-practice for poetry layout.
 //  Table display gives us that, and (unlike inline-block)
@@ -23,7 +28,7 @@
         // Avoid inheriting book-style paragraphs
         // that are closed up and indented.
         // Margin-bottom may need case-by-case overriding.
-        margin-bottom: 1em;
+        margin-bottom: initial;
         text-indent: 0;
     }
 }
@@ -38,13 +43,13 @@ blockquote.versed {
 // Make runover lines indented
 .versed [class*='versed-line-number-'] {
     display: block;
-    text-indent: -2em;
-    margin-left: 2em;
+    text-indent: -($runover-indent);
+    margin-left: $runover-indent;
 }
 
 // Indent runovers of indented lines
 @for $i from 1 through 50 {
-    $add-margin: $i + 2em;
+    $add-margin: $i + $runover-indent;
     .versed .versed-line-indent-#{$i}-em {
         margin-left: $add-margin;
         text-indent: -($add-margin)
@@ -59,12 +64,12 @@ blockquote.versed {
         &:after {
             counter-increment: line;
             content: counter(line);
-            color: #CCCCCC;
+            color: $line-numbers-color;;
             float: right;
-            margin-left: 2em;
+            margin-left: $runover-indent;
             text-indent: 0;
-            font-size: 0.8em;
-            margin-top: 0.2em; // aligns numbers with text after font-size change
+            font-size: $line-numbers-size;
+            margin-top: 1 - $line-numbers-size; // aligns numbers with text after font-size change
         }
     }
 }
