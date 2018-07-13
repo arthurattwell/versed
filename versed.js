@@ -43,28 +43,35 @@ function versedStripSpaces(str) {
     return newStr;
 }
 
-function versedWrapLines(
-
-    // Wrap each line of a stanza in a span
-    // Adapted from https://gist.github.com/madrobby/1119059
-    stanza,                                                 // a DOM element
-    match                                                   // regexp to find lines
-) {
-    stanza.innerHTML =                                      // replace the html contents
-        stanza.innerHTML.replace(                           // with the text contents
-        match || /(^|<br[ \/]*?>).*?(?=<br[ \/]*?>|$)/gmi,  // regexp to match each line
-        function(line){                                     // wrapped in
-                return '<span class="versed-line-number-' + // span with class names
-                    (stanza=-~stanza) +                     // span 1 .. span N. "stanza" is reused, and initialized.
-                                                            //    ~document.body  => -1
-                                                            //    -~document.body => 1
-                                                            //    -~1             => 2
-                                                            //    -~2             => 3 etc.
-                    '">' + 
-                    versedStripSpaces(line) +               // line of poetry, with leading/trailing spaces stripped
-                    '</span>'
+function versedWrapLines(stanza) {
+    // Split the stanza into an array on br tags.
+    // First, replace all br tags with a UUID to make replacing easier
+    var splitOnThis = '9d09153e-978b-4160-919e-f88c57c19d32';
+    stanza.innerHTML = stanza.innerHTML.replace(/<br[ \/]*?>/gmi, splitOnThis);
+    var arrayOfLines = stanza.innerHTML.split(splitOnThis);
+    // Create an empty array into which we'll write our newly wrapped lines.
+    var arrayOfSpans = [];
+    // For each line, strip leading and trailing spaces,
+    // wrap in a span, and remove br tags. Then,
+    // once all the lines have been added to the arrayOfSpans,
+    // build the new stanza from the array.
+    for (var i = 0; i < arrayOfLines.length; i++) {
+        var lineNumber = [i + 1];
+        var line = '<span class="versed-line-number-' + lineNumber + '">' + versedStripSpaces(arrayOfLines[i]) + '</span>';
+        var line = line.replace(/<br[ \/]*>/gim, '');
+        arrayOfSpans.push(line);
+        if ([i].index = arrayOfLines.length) {
+            rebuildStanza(arrayOfSpans)
         }
-    ).replace(/<br[ \/]*>/gim, '')                         // and remove the break elements
+    }
+    function rebuildStanza(arrayOfSpans) {
+        // Remove the old stanza content ...
+        stanza.innerHTML = '';
+        // ... and add each line to the newly built stanza.
+        for (var i = 0; i < arrayOfSpans.length; i++) {
+            stanza.innerHTML += arrayOfSpans[i];
+        }
+    }
 }
 
 function versedCountIndents(line, spaces) {
