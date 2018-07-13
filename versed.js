@@ -44,6 +44,7 @@ function versedStripSpaces(str) {
 }
 
 function versedWrapLines(stanza) {
+
     // Split the stanza into an array on br tags.
     // First, replace all br tags with a UUID to make replacing easier
     var splitOnThis = '9d09153e-978b-4160-919e-f88c57c19d32';
