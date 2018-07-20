@@ -128,6 +128,14 @@ To add line numbers, add the class `versed-number-lines` to your `div` or `block
 </div>
 ```
 
+## In epub
+
+In some, great ereaders like Readium, Versed works perfectly! Unfortunately, many epub readers (including Adobe Digital Editions and Sigil) inject their own scripts and attributes into your pristine HTML, and this clashes with `versed.js`, and makes a mess of your verse.
+
+## In print
+
+If you print from Chrome, Versed works just fine. It does not (yet) work with PrinceXML directly.
+
 ## Background
 
 Poetry formatting is complicated, and if you've studied poetry and know HTML you know that HTML has no inherent way to mark up poetry semantically in a way that suits the structure of most poems. And the same goes for all verse, including lyrics and hymns or snippets of song in running text.
