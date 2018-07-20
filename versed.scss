@@ -25,11 +25,11 @@ $line-numbers-size: 0.8em;
         text-align: left;
         widows: 2;
         orphans: 2;
-        // Avoid inheriting book-style paragraphs
-        // that are closed up and indented.
-        // Margin-bottom may need case-by-case overriding.
-        margin-bottom: initial;
-        text-indent: 0;
+        // If your styles have book-style paragraphs
+        // that are closed up and indented,
+        // create your own custom CSS to ensure that
+        // .versed p has margin-bottom, and
+        // .versed p has text-indent: 0.
     }
 }
 
